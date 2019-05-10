@@ -5,11 +5,14 @@ import Smurf from './Smurf';
 
 class Smurfs extends Component {
 
-
-
    submit = (id) => {
     this.props.removeSmurfs(id);
   }
+
+  go(ev, smurf) {
+    ev.preventDefault();
+    this.props.history.push(`/smurfs/${smurf.id}`);
+}
 
   render() {
     return (
@@ -22,8 +25,8 @@ class Smurfs extends Component {
                 <h3>{smurf.name}</h3>
                 <strong>{smurf.height} tall</strong>
                 <p>{smurf.age} smurf years old</p>
-                <div><Link to={`/${smurf.id}`}>Update</Link></div>
-                <div><Link to="/" onClick={() => this.submit(smurf.id)} >Delete</Link></div>
+                <div><Link to={`/smurfs/${smurf.id}`} onClick={ev => this.go(ev, smurf)} >Update</Link></div>
+                <div><Link to="/smurfs" onClick={() => this.submit(smurf.id)} >Delete</Link></div>
               </div>
             );
           })}

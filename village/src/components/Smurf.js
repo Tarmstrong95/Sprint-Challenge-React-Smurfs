@@ -1,20 +1,26 @@
 import React from 'react';
 import './smurf.css';
+import SmurfForm from './SmurfForm'
 
-const Smurf = props => {
-const smurf = props.smurfs.find(smurf => {
-  return (smurf.id === props.match.params.id)
-})
-if (!smurf) return "Loading...."
+class Smurf extends React.Component {
+  state = {
+    smurf: null
+  }
 
-  
-  return (
-    <div>
-      <input value={smurf.name}/>
-      <input value={smurf.age}/>
-      <input value={smurf.height}/>
-    </div>
-  );
+  componentDidMount() {
+    this.setState({
+      smurf: this.props.smurfs.find(smurf => smurf.id == this.props.match.params.id)
+    })
+  }
+
+  render() {
+    console.log(this.state)
+    if (!this.state.smurf) return "Loading...";
+    return (
+      <SmurfForm add={false} name={this.state.smurf.name} age={this.state.smurf.age} height={this.state.smurf.height} smurf={this.state.smurf} id={this.state.smurf.id} update={this.props.update}/>
+    );
+  }
+
 };
 
 
