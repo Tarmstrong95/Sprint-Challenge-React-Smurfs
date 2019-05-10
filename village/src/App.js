@@ -5,7 +5,8 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
-import NavBar from './components/Nav/Nav'
+import UpdateSmurf from './components/UpdateSmurf/UpdateSmurf'
+import NavBar from './components/Nav/Nav';
 
 class App extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class App extends Component {
         <NavBar />
         <Route path="/form" render={props => <SmurfForm { ...props } addSmurfs={this.addSmurfs}/>}/>
         <Route exact path="/" render={props => <Smurfs { ...props } removeSmurfs={this.removeSmurfs} smurfs={this.state.smurfs} />} />
-        
+        <Route path='/:id' render={props => <UpdateSmurf {...props} smurfs={this.state.smurfs}/>}/>
       </div>
     );
   }

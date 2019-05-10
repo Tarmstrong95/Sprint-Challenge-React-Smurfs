@@ -1,26 +1,18 @@
 import React from 'react';
+import './smurf.css';
 
 const Smurf = props => {
 
-  const submit = (e) => {
-    e.preventDefault();
-    props.removeSmurfs(props.id);
-  }
+
+  
   return (
-    <div className="Smurf">
-      <h3>{props.name}</h3>
-      <strong>{props.height} tall</strong>
-      <p>{props.age} smurf years old</p>
-      <button onClick={submit} >Delete</button>
+    <div>
+      
     </div>
   );
 };
 
-Smurf.defaultProps = {
-  name: '',
-  height: '',
-  age: ''
-};
+
 
 export default Smurf;
 
