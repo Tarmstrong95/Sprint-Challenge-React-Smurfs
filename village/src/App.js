@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
-import UpdateSmurf from './components/UpdateSmurf/UpdateSmurf'
+import Smurf from './components/Smurf'
 import NavBar from './components/Nav/Nav';
 
 class App extends Component {
@@ -23,7 +23,11 @@ class App extends Component {
   }
 
   addSmurfs = (smurf) => {
-    axios.post('http://localhost:3333/smurfs', smurf)
+    axios.post('http://localhost:3333/smurfs', {
+      name: smurf.name,
+      age: parseInt(smurf.age),
+      height: smurf.height
+    })
     .then(res => this.setState({ smurfs: res.data }))
     .catch(err => console.log(err))
     console.log(smurf)
@@ -50,7 +54,7 @@ class App extends Component {
         <NavBar />
         <Route path="/form" render={props => <SmurfForm { ...props } addSmurfs={this.addSmurfs}/>}/>
         <Route exact path="/" render={props => <Smurfs { ...props } removeSmurfs={this.removeSmurfs} smurfs={this.state.smurfs} />} />
-        <Route path='/:id' render={props => <UpdateSmurf {...props} smurfs={this.state.smurfs}/>}/>
+        <Route path='/:id' render={props => <Smurf {...props} smurfs={this.state.smurfs}/>}/>
       </div>
     );
   }

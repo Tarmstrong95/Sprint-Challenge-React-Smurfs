@@ -22,7 +22,7 @@ class Smurfs extends Component {
                 <h3>{smurf.name}</h3>
                 <strong>{smurf.height} tall</strong>
                 <p>{smurf.age} smurf years old</p>
-                <div><Link to={`/smurfs/${smurf.id}`}>Update</Link></div>
+                <div><Link to={`/${smurf.id}`}>Update</Link></div>
                 <div><Link to="/" onClick={() => this.submit(smurf.id)} >Delete</Link></div>
               </div>
             );
