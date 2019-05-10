@@ -12,22 +12,24 @@ class SmurfForm extends Component {
 
   addSmurf = event => {
     event.preventDefault();
-    // add code to create the smurf using the api
-    if(this.props.add){
-    this.props.addSmurfs(this.state)
-    }else{
+    this.props.add ?
+      this.props.addSmurfs(this.state) :
       this.props.update(this.props.id, this.state)
-    }
     this.setState({
       name: '',
       age: '',
       height: ''
     });
-    document.getElementById('done').style.display = 'block';
+    document.getElementById('done')
+      .style
+      .display = 'block';
   }
 
   handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]:
+        e.target.value
+    });
   };
 
   render() {
@@ -54,7 +56,7 @@ class SmurfForm extends Component {
           />
           <button type="submit">Add/Update</button>
         </form>
-        <h1 id="done" style={{display: 'none'}}>DONE</h1>
+        <h1 id="done" style={{ display: 'none' }}>DONE</h1>
       </div>
     );
   }
