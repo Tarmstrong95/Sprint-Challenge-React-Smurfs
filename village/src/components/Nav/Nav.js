@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import './nav.css'
 
-const NavBar = props => {
+const NavBar = () => {
     return (
         <div>
-            <Link to="/smurfs" >Home</Link>{' '}
-            <Link to="/form" >Form</Link>
+            <NavLink className="nav-item" activeClassName="active" to="/smurfs" >Home</NavLink>{' '}
+            <NavLink className="nav-item" activeClassName="active" to="/form" >Form</NavLink>
         </div>
     )
 }
