@@ -20,7 +20,7 @@ class Smurfs extends Component {
             return (
               <div key={i} className="smurf">
                 <h3>{smurf.name}</h3>
-                <strong>{smurf.height} tall</strong>
+                <strong>{smurf.height}cm tall</strong>
                 <p>{smurf.age} smurf years old</p>
                 <div><Link to={`/smurfs/${smurf.id}`} >Update</Link></div>
                 <div><Link to="/smurfs" onClick={() => this.submit(smurf.id)} >Delete</Link></div>

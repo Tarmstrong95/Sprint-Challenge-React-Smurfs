@@ -12,9 +12,13 @@ class SmurfForm extends Component {
 
   addSmurf = event => {
     event.preventDefault();
-    this.props.add ?
-      this.props.addSmurfs(this.state) :
-      this.props.update(this.props.id, this.state)
+    if (this.props.add) {
+      this.props.addSmurfs(this.state)
+    } else {
+      this.props.update(this.props.id, this.state);
+      this.props.cardUpdate(this.state);
+    }
+
     this.setState({
       name: '',
       age: '',
