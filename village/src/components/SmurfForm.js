@@ -4,25 +4,36 @@ class SmurfForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      age: '',
-      height: ''
+      name: this.props.name,
+      age: this.props.age,
+      height: this.props.height
     };
   }
 
   addSmurf = event => {
     event.preventDefault();
-    // add code to create the smurf using the api
+    if (this.props.add) {
+      this.props.addSmurfs(this.state)
+    } else {
+      this.props.update(this.props.id, this.state);
+      this.props.cardUpdate(this.state);
+    }
 
     this.setState({
       name: '',
       age: '',
       height: ''
     });
+    document.getElementById('done')
+      .style
+      .display = 'block';
   }
 
   handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]:
+        e.target.value
+    });
   };
 
   render() {
@@ -47,8 +58,9 @@ class SmurfForm extends Component {
             value={this.state.height}
             name="height"
           />
-          <button type="submit">Add to the village</button>
+          <button type="submit">Add/Update</button>
         </form>
+        <h1 id="done" style={{ display: 'none' }}>DONE</h1>
       </div>
     );
   }
